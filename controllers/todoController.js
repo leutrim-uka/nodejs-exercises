@@ -3,7 +3,7 @@ const Todo = require('./../models/Todo');
 exports.getAllTodos = async(req, res) => {
     try {
         const allTodos = await Todo.find();
-        res.render("index", {todos: allTodos});
+        res.render("index", {todo: allTodos});
     } catch (err) {
         res.status(404).json({
             status: 'failed',
@@ -13,6 +13,7 @@ exports.getAllTodos = async(req, res) => {
 }
 
 exports.createTodo = async (req, res) => {
+    console.log(req.body);
     const { todo } = req.body;
     const newTodo = new Todo({ todo });
 
